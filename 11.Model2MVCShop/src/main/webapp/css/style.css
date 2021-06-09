@@ -1,0 +1,70 @@
+@charset "EUC-KR";
+
+
+html, body { margin:0}
+
+a{
+	color: inherit;
+	text-decoration: none;
+}
+
+#main{
+	background: url("https://pixabay.com/get/g5735d998b7ce81531f88447b9e7714cbea402a9221b7cbd492e8c133225a3fce1d74e054ce53a659584996cc9121d8fd_1920.png") no-repeat;
+	background-size: cover;
+	background-position: center center;
+	width: 100vw;
+	height: 100vh;
+	font-family: 'Odibee Sans', cursive;
+}
+
+#contents{
+	position: absolute;
+	top:15%;
+	width:100%;
+	color: #ff8080;
+	text-align: center;
+}
+
+#contents h1{
+	font-size: 100px;
+}
+#contents p{
+	color:black;
+	font-size: 50px;
+}
+
+#contents a{
+	font-size:40px;
+	font-weight:bold;
+	color:#ff8080;
+	display: inline-block;
+	border: 5px solid black;
+	border-radius:20px;
+	padding: 10px 40px;
+}
+
+@media(max-width:769px)  { 
+	
+	#contents h1{
+	font-size: 80px;
+	}
+	#contents p{
+	color:black;
+	font-size: 30px;
+	}
+	#contents a{
+	font-size:20px;
+	font-weight:bold;
+	color:#ff8080;
+	display: inline-block;
+	border: 5px solid black;
+	border-radius:20px;
+	padding: 10px 40px;
+	}
+
+}
+
+
+
+
+
