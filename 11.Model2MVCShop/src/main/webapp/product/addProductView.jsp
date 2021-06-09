@@ -65,7 +65,7 @@
 	         return;
 	      }
 	   
-	      $('form').attr("method", "POST").attr("action", "/product/addProduct").submit();
+	      $('form').attr("method", "POST").attr("action", "/product/addProduct").attr("enctype","multipart/form-data").submit();
 	   }
 	   
 	   $(function() {
@@ -144,14 +144,14 @@
 		    <div class="form-group">
 		    <label for="price" class="col-sm-offset-1 col-sm-3 control-label">가 격</label>
 		    <div class="col-sm-4">
-		      <input type="text" class="form-control" id="price" name="price" placeholder="가격을 입력해주세요.">
+		      <input type="text" class="form-control" id="price" name="price" placeholder="가격">
 		    </div>
 		  </div>
 		  
 		  <div class="form-group">
-		    <label for="fileName" class="col-sm-offset-1 col-sm-3 control-label">이미지 파일</label>
+		    <label for="uploadFile" class="col-sm-offset-1 col-sm-3 control-label">이미지 파일</label>
 		    <div class="col-sm-4">
-		      <input type="text" class="form-control" id="fileName" name="fileName" placeholder="이미지 파일경로를 올려주세요" readonly/>
+		      <input type="file" class="form-control" id="uploadFile" name="uploadFile" placeholder="이미지 첨부" readonly/>
 		    </div>
 		  </div>
 	

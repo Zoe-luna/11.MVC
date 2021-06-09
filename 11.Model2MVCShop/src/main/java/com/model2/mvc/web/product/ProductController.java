@@ -1,5 +1,9 @@
 package com.model2.mvc.web.product;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.Cookie;
@@ -16,6 +20,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.model2.mvc.common.Page;
 import com.model2.mvc.common.Search;
@@ -61,6 +66,18 @@ public class ProductController {
 														Model model) throws Exception {
 			
 			System.out.println("/product/addProduct : POST");
+			
+			MultipartFile uploadfile = product.getUploadFile();
+			if (uploadfile != null) {
+				String fileName = uploadfile.getOriginalFilename();
+				product.setFileName(fileName);
+				try {
+					File file = new File("C:\\Users\\woan2\\git\\11.MVC\\11.Model2MVCShop\\src\\main\\webapp\\images\\uploadFiles\\"+fileName);
+					uploadfile.transferTo(file);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 
 			productService.addProduct(product);
 			System.out.println(product);
@@ -72,18 +89,66 @@ public class ProductController {
 		
 		@RequestMapping(value="getProduct",  method=RequestMethod.GET)
 		public String getProduct(@RequestParam("menu") String menu
-								,@RequestParam("prodNo") int prodNo, Model model, HttpServletResponse response) throws Exception {
+								,@RequestParam("prodNo") int prodNo, Model model, HttpServletResponse response
+								,HttpServletRequest request) throws Exception {
 			
 			System.out.println("/product/getProduct : GET");
+			
+			String prodNoStr = Integer.toString(prodNo);
 			
 			Product product = productService.getProduct(prodNo);
 			
 			model.addAttribute("product", product);
 			model.addAttribute("menu",menu);
+			/*
+			 * 
+			 * 중복제거 cookie로  수정예정
+			 * 
+			Cookie cookie = new Cookie("history", null);
 			
-			Cookie cookie = new Cookie("history",Integer.toString(prodNo));
-			response.addCookie(cookie);
+			for(Cookie inCookie : request.getCookies()) {
+				if(inCookie.getName().equals("history")) {
+					cookie = inCookie;
+					break;
+				}
+			}
 			
+			String history = cookie.getValue();
+			String newHistory;
+			
+			if(history == null) {
+				newHistory = prodNoStr;
+			}else {
+				List<String> historys = new ArrayList<String>();
+				historys.addAll(Arrays.asList(history.split(",")));
+				int dupleIndex = historys.indexOf(prodNoStr);
+				historys.add(prodNoStr);
+				if(dupleIndex > -1) {
+					historys.remove(dupleIndex);
+				}
+				newHistory = String.join(",", historys);
+			}
+			
+			cookie = new Cookie("history", newHistory);
+			cookie.setPath("/");
+			*/
+			   Cookie[] cookies = request.getCookies();
+			      
+			      if(cookies != null ) {
+			         for (int i = 0; i < cookies.length; i++) {
+			            Cookie cookie = cookies[i];
+			            if(cookie.getName().equals("history")) {
+			               Cookie cookie2 = new Cookie("history",cookie.getValue()+","+Integer.toString(prodNo));
+			               cookie2.setPath("/");
+			               response.addCookie(cookie2);
+			            }else {
+			               Cookie cookie2 = new Cookie("history",Integer.toString(prodNo));
+			               cookie2.setPath("/");
+			               response.addCookie(cookie2);
+			            }
+			         }
+			      }
+
 			if(menu.equals("manage")) {
 				return "forward:/product/updateProductView.jsp";
 			}else {

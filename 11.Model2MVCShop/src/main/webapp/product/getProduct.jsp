@@ -1,95 +1,78 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"%>
+<%@page import="com.model2.mvc.service.domain.Product"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+
+<html lang="ko">
+	
+<head>
+	<meta charset="EUC-KR">
+	
+	<!-- 참조 : http://getbootstrap.com/css/   참조 -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	
+	<!--  ///////////////////////// Bootstrap, jQuery CDN ////////////////////////// -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+	
+	<!-- Bootstrap Dropdown Hover CSS -->
+   <link href="/css/animate.min.css" rel="stylesheet">
+   <link href="/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
+   
+    <!-- Bootstrap Dropdown Hover JS -->
+   <script src="/javascript/bootstrap-dropdownhover.min.js"></script>
+	
+	<script type="text/javascript">
+		
+		//============= 회원정보수정 Event  처리 =============	
+		 $(function() {
+			//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
+			 $( "#confirm" ).on("click" , function() {
+					self.location = "/product/listProduct?menu=search"
+				});
+		});
+		
+		
+	</script>
 
 <html>
 <head>
+
 <link rel="stylesheet" href="/css/admin.css" type="text/css">
 
-<title>상품상세조회</title>
+<title>Insert title here</title>
 </head>
 
-<body bgcolor="#ffffff" text="#000000">
+<body>
 
-<jsp:include page="/layout/toolbar.jsp" />
-
-<form name="detailForm" method="post">
-
-<table width="100%" height="37" border="0" cellpadding="0"	cellspacing="0">
-	<tr>
-		<td width="15" height="37"><img src="/images/ct_ttl_img01.gif"	width="15" height="37"></td>
-		<td background="/images/ct_ttl_img02.gif" width="100%" style="padding-left: 10px;">
-			<table width="100%" border="0" cellspacing="0" cellpadding="0">
-				<tr>
-					<td width="93%" class="ct_ttl01">상품상세조회</td>
-					<td width="20%" align="right">&nbsp;</td>
-				</tr>
-			</table>
-		</td>
-		<td width="12" height="37">
-			<img src="/images/ct_ttl_img03.gif"  width="12" height="37"/>
-		</td>
-	</tr>
-</table>
-
-<table width="100%" border="0" cellspacing="0" cellpadding="0"	style="margin-top: 13px;">
-	<tr>
-		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
-	</tr>
-	<tr>
-		<td width="104" class="ct_write">
-			상품번호 <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
-		</td>
-		<td bgcolor="D6D6D6" width="1"></td>
-		<td class="ct_write01">
-			<table width="100%" border="0" cellspacing="0" cellpadding="0">
-				<tr>
-					<td width="105">${ product.prodNo }</td>
-				</tr>
-			</table>
-		</td>
-	</tr>
-	<tr>
-		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
-	</tr>
-	<tr>
-		<td width="104" class="ct_write">
-			상품명 <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
-		</td>
-		<td bgcolor="D6D6D6" width="1"></td>
-		<td class="ct_write01">${ product.prodName }</td>
-	</tr>
-	<tr>
-		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
-	</tr>
-	<tr>
-		<td width="104" class="ct_write">
-			상품이미지 <img 	src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
-		</td>
-		<td bgcolor="D6D6D6" width="1"></td>
-		<td class="ct_write01">
-			<img src = "/images/uploadFiles/${ product.fileName }"/>
-		</td>
-	</tr>
-	<tr>
-		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
-	</tr>
-	<tr>
-		<td width="104" class="ct_write">
-			상품상세정보 <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
-		</td>
-		<td bgcolor="D6D6D6" width="1"></td>
-		<td class="ct_write01">${ product.prodDetail }</td>
-	</tr>
-	<tr>
-		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
-	</tr>
-	<tr>
-		<td width="104" class="ct_write">
-			상품종류 <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
-		</td>
-		<td bgcolor="D6D6D6" width="1"></td>
-		<td class="ct_write01">
+	<!-- ToolBar Start /////////////////////////////////////-->
+	<jsp:include page="/layout/toolbar.jsp" />
+   	<!-- ToolBar End /////////////////////////////////////-->
+	
+	<!--  화면구성 div Start /////////////////////////////////////-->
+	<div class="container">
+	
+<br/><br/><br/><br/>
+<h1 style="font-family:a옛날사진관4;">상품 상세 조회</h1>
+<br/>
+	<table class="table">	
+		<!-- On rows -->
+		<tr>
+			<td class="success" width="135"><b>&nbsp;&nbsp;상품명</b></td>
+			<td width="825">&nbsp;&nbsp;${product.prodName}</td>
+		</tr>
+		<tr>
+			<td class="success" width="135"><b>&nbsp;&nbsp;상품상세정보</b></td>
+			<td width="825">&nbsp;&nbsp;${product.prodDetail}</td>
+		</tr>
+			<tr>
+			<td class="success" width="135"><b>&nbsp;&nbsp;상품종류</b></td>
+			<td bgcolor="D6D6D6" width="1"></td>
+			<td class="ct_write01">
 				<c:if test="${product.category == '1'}">
 						식음료품
 				</c:if>
@@ -103,92 +86,36 @@
 						운동기구
 				</c:if>
 			</td>
-	</tr>
-	<tr>
-		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
-	</tr>
-	<tr>
-		<td width="104" class="ct_write">제조일자</td>
-		<td bgcolor="D6D6D6" width="1"></td>
-		<td class="ct_write01">${ product.manuDate }</td>
-	</tr>
-	<tr>
-		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
-	</tr>
-	<tr>
-		<td width="104" class="ct_write">가격</td>
-		<td bgcolor="D6D6D6" width="1"></td>
-		<td class="ct_write01">${ product.price }</td>
-	</tr>
-	<tr>
-		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
-	</tr>
-	<tr>
-		<td width="104" class="ct_write">등록일자</td>
-		<td bgcolor="D6D6D6" width="1"></td>
-		<td class="ct_write01">${ product.regDate }</td>
-	</tr>
-	<tr>
-		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
-	</tr>
-</table>
-
-<table width="100%" border="0" cellspacing="0" cellpadding="0"	style="margin-top: 10px;">
-	<tr>
-		<td width="53%"></td>
-		<td align="right">
+			
+		</tr>
+		<tr>
+			<td class="success" width="135"><b>&nbsp;&nbsp;제조일자</b></td>
+			<%-- <td width="825">&nbsp;&nbsp;${product.manuDate}</td> --%>
+			<fmt:parseDate value="${product.manuDate }" var="date" pattern="yyyyMMdd" />
+			<td width="825">&nbsp;&nbsp;s<fmt:formatDate value="${date }" pattern="yyyy-MM-dd" /></td>
+		</tr>
+		<tr>
+			<td class="success" width="135"><b>&nbsp;&nbsp;가격</b></td>
+			<%-- <td width="825">&nbsp;&nbsp;${product.price} 원</td> --%>
+			<td width="825">&nbsp;&nbsp;<fmt:formatNumber value="${product.price }" pattern="#,###" />원</td>
+		</tr>	
+		<tr>
+			<td class="success" width="135"><b>&nbsp;&nbsp;이미지</b></td>
+			<td width="825">&nbsp;&nbsp;-</td>
+		</tr>		
 		
-		<table border="0" cellspacing="0" cellpadding="0">
-			<tr>
-		
-				<td width="17" height="23">
-					<img src="/images/ct_btnbg01.gif" width="17" height="23"/>
-				</td>
+		<tr>
+			<td width="135"></td>
+			<td width="825"></td>
+		</tr>	
+	</table>
+	
 
-				<td background="/images/ct_btnbg02.gif" class="ct_btn01" style="padding-top:3px;">
-				
-						<c:if test="${ param.menu == 'manage' }">
-							<a href="/product/listProduct?menu=manage">확인</a>
-						</c:if>
-						<c:if test="${ param.menu == 'search' }">
-							<a href="/purchase/addPurchase">구매</a>
-						</c:if>
-						
-				</td>
-					
-				<td width="14" height="23">
-					<img src="/images/ct_btnbg03.gif" width="14" height="23">
-				</td>
-			</tr>
-		</table>
-		</td>
-	</tr>
-</table>
-
-<table width="100%" border="0" cellspacing="0" cellpadding="0"	style="margin-top: 10px;">
-	<tr>
-		<td width="53%"></td>
-		<td align="right">
-
-		<table border="0" cellspacing="0" cellpadding="0">
-			<tr>
-		
-				<td width="17" height="23">
-					<img src="/images/ct_btnbg01.gif" width="17" height="23"/>
-				</td>
-				<td background="/images/ct_btnbg02.gif" class="ct_btn01" style="padding-top: 3px;">
-					<a href="javascript:history.go(-1)">이전</a>
-				</td>
-				<td width="14" height="23">
-					<img src="/images/ct_btnbg03.gif" width="14" height="23">
-				</td>
-			</tr>
-		</table>
-
-		</td>
-	</tr>
-</table>
-</form>
+	 <div class="form-group">
+		    <div class="col-sm-offset-4  col-sm-4 text-center">
+		      <button type="button" class="btn btn-success" id="confirm" >확 &nbsp;인</button>
+		    </div>
+	</div>
 
 </body>
 </html>

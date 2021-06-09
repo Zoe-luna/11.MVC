@@ -29,7 +29,60 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
 	
 	<!--  ///////////////////////// CSS ////////////////////////// -->
-	<style></style>
+	<style>
+
+img:hover {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
+
+.button {
+  border-radius: 4px;
+  background-color: pink;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 30px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  color: #ff8080;
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+	
+	
+	</style>
+	
+	<!-- font	 -->
+   <link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Odibee+Sans&display=swap" rel="stylesheet">
    	
    	<!--  ///////////////////////// JavaScript ////////////////////////// -->
 	<script type="text/javascript">
@@ -60,11 +113,14 @@
 	<div class="navbar  navbar-default">
 		
         <div class="container">
+
+	
         
-        	<a class="navbar-brand" href="#">문방구</a>
+        	<a class="navbar-brand" href="#">오 백 냥</a>
 			
 			<!-- toolBar Button Start //////////////////////// -->
 			<div class="navbar-header">
+			
 			    <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#target">
 			        <span class="sr-only">Toggle navigation</span>
 			        <span class="icon-bar"></span>
@@ -75,11 +131,14 @@
 			<!-- toolBar Button End //////////////////////// -->
 			
 			<div class="collapse navbar-collapse"  id="target">
+			
+			
 	             <ul class="nav navbar-nav navbar-right">
 	                 <li><a href="#">로 그 인</a></li>
 	                 <li><a href="#">회원가입</a></li>
 	           	</ul>
 	       </div>
+	      
    		
    		</div>
    	</div>
@@ -145,15 +204,21 @@
 			<!--  Menu 구성 end /////////////////////////////////////-->   
 
 	 	 	<!--  Main start /////////////////////////////////////-->   		
-	 	 	<div class="col-md-9">
-				<div class="jumbotron">
-			  		<h1>문 방 구</h1>
-			  		<p>로그인 하세요</p>
-			  		<p style="color:pink">비회원은 검색만 가능합니다.</p>
+	 	 	<div class="col-md-9">	 	
+	 	 	
+				<div>
+<div class="row">
+			<div class="column">
+    			<img src="../images/winkcat.jpg" alt="Wink" style="width:35%"">
+  			</div>
+</div>
+
+				
+			  		<h1>오 백 냥</h1>
 			  		
 			  		<div class="text-center">
-			  			<a class="btn btn-info btn-lg" href="#" role="button">회원가입</a>
-			  			<a class="btn btn-info btn-lg" href="#" role="button">로 그 인</a>
+			  			<a class="button" href="#" role="button"><span>회원가입</span></a>
+			  			<a class="button" href="#" role="button"><span>로 그 인</span></a>
 			  		</div>
 			  	
 			  	</div>

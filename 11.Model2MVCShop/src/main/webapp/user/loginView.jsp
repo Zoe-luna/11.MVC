@@ -24,6 +24,49 @@
         	border: 3px solid #D6CDB7;
             margin-top: 10px;
         }
+        
+        
+.button {
+  border-radius: 4px;
+  background-color: pink;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 20px;
+  padding: 20px;
+  width: 100px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  color: #ff8080;
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+        
+        
     </style>
     
     <!--  ///////////////////////// JavaScript ////////////////////////// -->
@@ -110,11 +153,12 @@
 					    </div>
 					  </div>
 					  
-					  <div class="form-group">
-					    <div class="col-sm-offset-4 col-sm-6 text-center">
-					      <button type="button" class="btn btn-primary"  >로 &nbsp;그 &nbsp;인</button>
-					      <a class="btn btn-primary btn" href="#" role="button">회 &nbsp;원 &nbsp;가 &nbsp;입</a>
-					    </div>
+					  <div class="text-center">
+
+					      <a class="button" href="#" role="button"><span>회원가입</span></a>
+					      
+					      <button type="button" class="button"  ><span>로 그 인</span></button>
+
 					  </div>
 			
 					</form>
