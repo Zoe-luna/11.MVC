@@ -71,17 +71,9 @@
 		</tr>
 			<tr>
 			<td class="success" width="135"><b>&nbsp;&nbsp;상품종류</b></td>
-			<td bgcolor="D6D6D6" width="1"></td>
+			
 			<td class="ct_write01">
-				<c:if test="${product.category == '1'}">
-						식음료품
-				</c:if>
-				<c:if test="${product.category == '2'}">
-						가전제품
-				</c:if>
-				<c:if test="${product.category == '3'}">
-						취미생활
-				</c:if>
+				
 				<c:if test="${product.category == '4'}">
 						운동기구
 				</c:if>
@@ -101,7 +93,8 @@
 		</tr>	
 		<tr>
 			<td class="success" width="135"><b>&nbsp;&nbsp;이미지</b></td>
-			<td width="825">&nbsp;&nbsp;-</td>
+			<img src = "/images/uploadFiles/${ product.fileName }"/>
+			<td width="825">&nbsp;&nbsp;${product.fileName }</td>
 		</tr>		
 		
 		<tr>

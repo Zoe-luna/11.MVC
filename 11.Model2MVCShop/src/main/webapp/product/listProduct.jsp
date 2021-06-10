@@ -42,7 +42,7 @@
 		
 			function fncGetList(currentPage) {
 				$("#currentPage").val(currentPage)
-				$("form").attr("method" , "POST").attr("action" , "/product/listProduct?menu= ${! empty menu && menu == 'manage' ? 'manage' : 'search'}").submit();
+				$("form").attr("method" , "POST").attr("action" , "/product/listProduct?menu=${menu}").submit();
 				
 		}
 		
@@ -118,6 +118,8 @@
 				  </div>
 				  
 				  <button type="button" class="btn btn-default">°Ë»ö</button>
+				  
+				  <input type="hidden" id="currentPage" name="currentPage" value=""/>
 				  
 				</form>
 	    	</div>
