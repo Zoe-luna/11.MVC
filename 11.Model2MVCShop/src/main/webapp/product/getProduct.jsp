@@ -73,9 +73,17 @@
 			<td class="success" width="135"><b>&nbsp;&nbsp;상품종류</b></td>
 			
 			<td class="ct_write01">
-				
+				<c:if test="${product.category == '1'}">
+					식음료품
+				</c:if>
+				<c:if test="${product.category == '2'}">
+					가전제품
+				</c:if>
+				<c:if test="${product.category == '3'}">
+					취미생활
+				</c:if>
 				<c:if test="${product.category == '4'}">
-						운동기구
+					운동기구
 				</c:if>
 			</td>
 			
