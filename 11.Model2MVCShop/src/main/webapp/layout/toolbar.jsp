@@ -79,11 +79,11 @@
 	                         
 	                         <li><a href="#">최근본상품</a></li>
 	                         <li class="divider"></li>
-	                         <li><a href="#">etc..</a></li>
+	                         <li><a href="#">etc...</a></li>
 	                     </ul>
 	                 </li>
 	                 
-	                 <li><a href="#">etc...</a></li>
+	                 <li><a href="#">게시판</a></li>
 	             </ul>
 	             
 	             <ul class="nav navbar-nav navbar-right">
@@ -147,6 +147,11 @@
 	 	$( "a:contains('최근본상품')" ).on("click" , function() {
 	 		//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
 	 		self.location = "../history.jsp";	 		
+		});
+	 	
+	 	$( "a:contains('게시판')" ).on("click" , function() {
+	 		//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
+	 		self.location = "../bbs/bbs.jsp";	 		
 		});
 		
 	</script>  

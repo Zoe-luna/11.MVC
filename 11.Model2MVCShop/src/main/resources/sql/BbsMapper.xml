@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="BbsMapper">
+ 	
+	<resultMap id="bbsSelectMap" type="bbs">
+		<result property="bbsID" 			column="bbs_id" 			jdbcType="NUMERIC"/>
+		<result property="bbsTitle"			column="bbs_title" 		jdbcType="VARCHAR" />
+		<result property="userId" 			column="user_id" 			jdbcType="VARCHAR" />
+		<result property="bbsDate" 		column="bbs_date" 		jdbcType="DATE" />
+		<result property="bbsContent" 	column="bbs_content" 	jdbcType="VARCHAR"  />
+	</resultMap>
+	
+	<!-- SQL : INSERT -->
+	<insert 	id="addBbs"		parameterType="bbs" >
+	 	INSERT
+		INTO bbs( bbs_id, bbs_title , user_id , bbs_date , bbs_content ) 
+		VALUES	 (	seq_bbs_bbs_id.NEXTVAL , #{bbsTitle} , #{userID} , SYSDATE , #{bbsContent})
+	 </insert>
+	 
+	 <!-- SQL : SELECT ONE -->
+	 <select 	id="getBbs"	parameterType="string"	resultMap="bbsSelectMap">
+		SELECT
+		bbs_title , user_id , bbs_date , bbs_content 		
+		FROM bbs 
+		WHERE user_id = #{value}
+	 </select>
+	 
+</mapper>
